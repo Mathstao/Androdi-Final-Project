@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Expense Tracker</string>
+    <string name="editone">Take a note...</string>
+    <string name="month_out">Month expenses</string>
+    <string name="out">Expenses</string>
+    <string name="month_in">Month income</string>
+    <string name="in">Income</string>
+    <string name="budget">Remaining budget</string>
+    <string name="set_budget">Set budget</string>
+    <string name="see_excel">View as chart</string>
+    <string name="add_remark">Add remark</string>
+    <string name="remark">Remark</string>
+    <string name="ensure">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="about">About</string>
+    <string name="setting">Settings</string>
+    <string name="history_record">Bill records</string>
+    <string name="account_info">Bill details</string>
+    <string name="please_input_time">Input time (24 hour)</string>
+    <string name="please_search_info">Search for</string>
+    <string name="date_empty">Empty result</string>
+    <string name="chart_info">Bill details</string>
+
+    <string name="about_appinfo">Application info</string>
+    <string name="about_version">Version</string>
+    <string name="about_1">1.0</string>
+    <string name="about_app">About </string>
+    <string name="about_balabala">Just for fun</string>
+    <string name="about_developer">Developer</string>
+    <string name="about_me">About me</string>
+    <string name="about_loc">Somewhere</string>
+    <string name="about_email">citaowu@gmail.com</string>
+    <string name="about_email2">...</string>
+    <string name="about_code">Source code</string>
+    <string name="about_codeinfo">Github</string>
+    <string name="about_B">...</string>
+    <string name="about_B2">...</string>
+
+    <string name="history_info">Month bill</string>
+    <string name="clear_all">Clear all</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="not_data">No data found</string>
+</resources>
