@@ -15,7 +15,7 @@ import androidx.annotation.NonNull;
 import com.hui.tally.R;
 
 /*
-* 在记录页面弹出时间对话框
+* Pop up the time dialog box on the record page
 * */
 public class SelectTimeDialog extends Dialog implements View.OnClickListener {
     EditText hourEt,minuteEt;
@@ -55,7 +55,7 @@ public class SelectTimeDialog extends Dialog implements View.OnClickListener {
                 cancel();
                 break;
             case R.id.dialog_time_btn_ensure:
-                int year = datePicker.getYear();  //选择年份
+                int year = datePicker.getYear();
                 int month = datePicker.getMonth()+1;
                 int dayOfMonth = datePicker.getDayOfMonth();
                 String monthStr = String.valueOf(month);
@@ -66,7 +66,6 @@ public class SelectTimeDialog extends Dialog implements View.OnClickListener {
                 if (dayOfMonth<10){
                     dayStr="0"+dayOfMonth;
                 }
-//              获取输入的小时和分钟
                 String hourStr = hourEt.getText().toString();
                 String minuteStr = minuteEt.getText().toString();
                 int hour = 0;
@@ -97,7 +96,6 @@ public class SelectTimeDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    //隐藏DatePicker头布局
     private void hideDatePickerHeader(){
         ViewGroup rootView = (ViewGroup) datePicker.getChildAt(0);
         if (rootView == null) {

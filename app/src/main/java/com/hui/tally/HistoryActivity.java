@@ -35,7 +35,6 @@ public class HistoryActivity extends AppCompatActivity {
         historyLv = findViewById(R.id.history_lv);
         timeTv = findViewById(R.id.history_tv_time);
         mDatas = new ArrayList<>();
-        // 设置适配器
         adapter = new AccountAdapter(this,mDatas);
         historyLv.setAdapter(adapter);
         initTime();
@@ -43,7 +42,7 @@ public class HistoryActivity extends AppCompatActivity {
         loadData(year,month);
         setLVClickListener();
     }
-    /*设置ListView每一个item的长按事件*/
+    /*Set the long press event of each item of ListView*/
     private void setLVClickListener() {
         historyLv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -58,20 +57,20 @@ public class HistoryActivity extends AppCompatActivity {
     private void deleteItem(final AccountBean accountBean) {
         final int delId = accountBean.getId();
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("提示信息").setMessage("您确定要删除这条记录么？")
-                .setNegativeButton("取消",null)
-                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+        builder.setTitle("Message").setMessage("Are you sure you want to delete this record?")
+                .setNegativeButton("cancel",null)
+                .setPositiveButton("confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         DBManager.deleteItemFromAccounttbById(delId);
-                        mDatas.remove(accountBean);   //实时刷新，从数据源删除
+                        mDatas.remove(accountBean);   //Refresh in real time, delete from data source
                         adapter.notifyDataSetChanged();
                     }
                 });
         builder.create().show();
     }
 
-    /* 获取指定年份月份收支情况的列表*/
+    /* Get a list of the income and expenditure of the specified year and month*/
     private void loadData(int year,int month) {
         List<AccountBean> list = DBManager.getAccountListOneMonthFromAccounttb(year, month);
         mDatas.clear();

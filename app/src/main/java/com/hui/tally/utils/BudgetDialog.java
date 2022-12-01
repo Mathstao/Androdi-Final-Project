@@ -53,18 +53,17 @@ public class BudgetDialog extends Dialog implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.dialog_budget_iv_error:
-                cancel();  //取消对话框
+                cancel();
                 break;
             case R.id.dialog_budget_btn_ensure:
-                //获取输入数据数值
                 String data = moneyEt.getText().toString();
                 if (TextUtils.isEmpty(data)) {
-                    Toast.makeText(getContext(),"输入数据不能为空！",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Empty input！",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 float money = Float.parseFloat(data);
                 if (money<=0) {
-                    Toast.makeText(getContext(),"预算金额必须大于0",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"Must > 0",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (onEnsureListener!=null) {
@@ -75,15 +74,12 @@ public class BudgetDialog extends Dialog implements View.OnClickListener {
         }
     }
 
-    /* 设置Dialog的尺寸和屏幕尺寸一致*/
+    /* Set the size of the Dialog to be the same as the screen size*/
     public void setDialogSize(){
-//        获取当前窗口对象
         Window window = getWindow();
-//        获取窗口对象的参数
         WindowManager.LayoutParams wlp = window.getAttributes();
-//        获取屏幕宽度
         Display d = window.getWindowManager().getDefaultDisplay();
-        wlp.width = (int)(d.getWidth());  //对话框窗口为屏幕窗口
+        wlp.width = (int)(d.getWidth());
         wlp.gravity = Gravity.BOTTOM;
         window.setBackgroundDrawableResource(android.R.color.transparent);
         window.setAttributes(wlp);
@@ -93,7 +89,7 @@ public class BudgetDialog extends Dialog implements View.OnClickListener {
     Handler handler = new Handler(){
         @Override
         public void handleMessage(@NonNull Message msg) {
-            //自动弹出软键盘的方法
+            //How to automatically pop up the soft keyboard
             InputMethodManager inputMethodManager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.toggleSoftInput(0,InputMethodManager.HIDE_NOT_ALWAYS);
         }

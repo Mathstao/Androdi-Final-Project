@@ -21,8 +21,8 @@ public class SearchActivity extends AppCompatActivity {
     ListView searchLv;
     EditText searchEt;
     TextView emptyTv;
-    List<AccountBean>mDatas;   //数据源
-    AccountAdapter adapter;    //适配器对象
+    List<AccountBean>mDatas;
+    AccountAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class SearchActivity extends AppCompatActivity {
         mDatas = new ArrayList<>();
         adapter = new AccountAdapter(this,mDatas);
         searchLv.setAdapter(adapter);
-        searchLv.setEmptyView(emptyTv);   //设置无数局时，显示的控件
+        searchLv.setEmptyView(emptyTv);
     }
 
     private void initView() {
@@ -45,14 +45,14 @@ public class SearchActivity extends AppCompatActivity {
             case R.id.search_iv_back:
                 finish();
                 break;
-            case R.id.search_iv_sh:   //执行搜索的操作
+            case R.id.search_iv_sh:
                 String msg = searchEt.getText().toString().trim();
-//                判断输入内容是否为空，如果为空，就提示不能搜索
+
                 if (TextUtils.isEmpty(msg)) {
                     Toast.makeText(this,"输入内容不能为空！",Toast.LENGTH_SHORT).show();
                     return;
                 }
-                //开始搜索
+
                 List<AccountBean> list = DBManager.getAccountListByRemarkFromAccounttb(msg);
                 mDatas.clear();
                 mDatas.addAll(list);

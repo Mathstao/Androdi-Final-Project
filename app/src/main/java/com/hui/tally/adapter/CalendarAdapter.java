@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-* 历史账单界面，点击日历表，弹出对话框，当中的GridView对应的适配器
+* In the historical bill interface, click the calendar table, and a dialog box will pop up, in which the Adapter corresponding to the GridView
 * */
 public class CalendarAdapter extends BaseAdapter {
     Context context;

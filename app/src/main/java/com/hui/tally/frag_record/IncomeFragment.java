@@ -12,7 +12,6 @@ public class IncomeFragment extends BaseRecordFragment {
     @Override
     public void loadDataToGV() {
         super.loadDataToGV();
-        //获取数据库当中的数据源
         List<TypeBean> inlist = DBManager.getTypeList(1);
         typeList.addAll(inlist);
         adapter.notifyDataSetChanged();

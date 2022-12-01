@@ -1,13 +1,13 @@
 package com.hui.tally.db;
 /*
-* 表示收入或者支出具体类型的类
+* A class representing a concrete type of income or expense
 * */
 public class TypeBean {
     int id;
-    String typename;   //类型名称
-    int imageId;    //未被选中图片id
-    int simageId;    //被选中图片id
-    int kind;     //收入-1  支出-0
+    String typename;
+    int imageId;
+    int simageId;
+    int kind;
 
     public int getId() {
         return id;

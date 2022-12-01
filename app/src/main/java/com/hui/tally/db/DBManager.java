@@ -13,28 +13,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /*
-* 负责管理数据库的类
-*   主要对于表当中的内容进行操作，增删改查
+* The class responsible for managing the database
 * */
 public class DBManager {
 
     private static SQLiteDatabase db;
-    /* 初始化数据库对象*/
+    /* init */
     public static void initDB(Context context){
         DBOpenHelper helper = new DBOpenHelper(context);  //得到帮助类对象
         db = helper.getWritableDatabase();      //得到数据库对象
     }
 
     /**
-     * 读取数据库当中的数据，写入内存集合里
-     *   kind :表示收入或者支出
+     * Read the data in the database and write it into the memory collection
      * */
     public static List<TypeBean>getTypeList(int kind){
         List<TypeBean>list = new ArrayList<>();
-        //读取typetb表当中的数据
         String sql = "select * from typetb where kind = "+kind;
         Cursor cursor = db.rawQuery(sql, null);
-//        循环读取游标内容，存储到对象当中
         while (cursor.moveToNext()) {
             String typename = cursor.getString(cursor.getColumnIndex("typename"));
             int imageId = cursor.getInt(cursor.getColumnIndex("imageId"));
@@ -48,7 +44,7 @@ public class DBManager {
     }
 
     /*
-    * 向记账表当中插入一条元素
+    * Insert an element into the accounting table
     * */
     public static void insertItemToAccounttb(AccountBean bean){
         ContentValues values = new ContentValues();
@@ -64,13 +60,13 @@ public class DBManager {
         db.insert("accounttb",null,values);
     }
     /*
-    * 获取记账表当中某一天的所有支出或者收入情况
+    * Obtain all expenditure or income of a certain day in the accounting table
     * */
     public static List<AccountBean>getAccountListOneDayFromAccounttb(int year,int month,int day){
         List<AccountBean>list = new ArrayList<>();
         String sql = "select * from accounttb where year=? and month=? and day=? order by id desc";
         Cursor cursor = db.rawQuery(sql, new String[]{year + "", month + "", day + ""});
-        //遍历符合要求的每一行数据
+        //Traverse each row of data that meets the requirements
         while (cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String typename = cursor.getString(cursor.getColumnIndex("typename"));
@@ -86,13 +82,13 @@ public class DBManager {
     }
 
     /*
-     * 获取记账表当中某一月的所有支出或者收入情况
+     * Get all the expenditure or income of a certain month in the accounting table
      * */
     public static List<AccountBean>getAccountListOneMonthFromAccounttb(int year,int month){
         List<AccountBean>list = new ArrayList<>();
         String sql = "select * from accounttb where year=? and month=? order by id desc";
         Cursor cursor = db.rawQuery(sql, new String[]{year + "", month + ""});
-        //遍历符合要求的每一行数据
+        //Traverse each row of data that meets the requirements
         while (cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String typename = cursor.getString(cursor.getColumnIndex("typename"));
@@ -108,7 +104,7 @@ public class DBManager {
         return list;
     }
     /**
-     * 获取某一天的支出或者收入的总金额   kind：支出==0    收入===1
+     * Get the total amount of expenditure or income for a certain day
      * */
     public static float getSumMoneyOneDay(int year,int month,int day,int kind){
         float total = 0.0f;
@@ -122,7 +118,7 @@ public class DBManager {
         return total;
     }
     /**
-     * 获取某一月的支出或者收入的总金额   kind：支出==0    收入===1
+     * Get the total amount of expenditure or income in a certain month
      * */
     public static float getSumMoneyOneMonth(int year,int month,int kind){
         float total = 0.0f;
@@ -135,7 +131,7 @@ public class DBManager {
         }
         return total;
     }
-    /** 统计某月份支出或者收入情况有多少条  收入-1   支出-0*/
+    /** Count how many records of expenditure or income in a certain month*/
     public static int getCountItemOneMonth(int year,int month,int kind){
         int total = 0;
         String sql = "select count(money) from accounttb where year=? and month=? and kind=?";
@@ -147,7 +143,7 @@ public class DBManager {
         return total;
     }
     /**
-     * 获取某一年的支出或者收入的总金额   kind：支出==0    收入===1
+     * Get the total amount of expenditure or income for a certain year
      * */
     public static float getSumMoneyOneYear(int year,int kind){
         float total = 0.0f;
@@ -162,14 +158,14 @@ public class DBManager {
     }
 
     /*
-    * 根据传入的id，删除accounttb表当中的一条数据
+    * According to the incoming id, delete a piece of data in the accounttb table
     * */
     public static int deleteItemFromAccounttbById(int id){
         int i = db.delete("accounttb", "id=?", new String[]{id + ""});
         return i;
     }
     /**
-     * 根据备注搜索收入或者支出的情况列表
+     * Search the list of income or expenditure according to the remarks
      * */
     public static List<AccountBean>getAccountListByRemarkFromAccounttb(String beizhu){
         List<AccountBean>list = new ArrayList<>();
@@ -193,7 +189,7 @@ public class DBManager {
     }
 
     /**
-     * 查询记账的表当中有几个年份信息
+     * How many years of information are there in the query bookkeeping table?
      * */
     public static List<Integer>getYearListFromAccounttb(){
         List<Integer>list = new ArrayList<>();
@@ -207,7 +203,7 @@ public class DBManager {
     }
 
     /*
-    * 删除accounttb表格当中的所有数据
+    * Delete all data in the accounttb table
     * */
     public static void deleteAllAccount(){
         String sql = "delete from accounttb";
@@ -215,11 +211,11 @@ public class DBManager {
     }
 
     /**
-     * 查询指定年份和月份的收入或者支出每一种类型的总钱数
+     * Query the total amount of each type of income or expenditure in a specified year and month
      * */
     public static List<ChartItemBean>getChartListFromAccounttb(int year,int month,int kind){
         List<ChartItemBean>list = new ArrayList<>();
-        float sumMoneyOneMonth = getSumMoneyOneMonth(year, month, kind);  //求出支出或者收入总钱数
+        float sumMoneyOneMonth = getSumMoneyOneMonth(year, month, kind);
         String sql = "select typename,sImageId,sum(money)as total from accounttb where year=? and month=? and kind=? group by typename " +
                 "order by total desc";
         Cursor cursor = db.rawQuery(sql, new String[]{year + "", month + "", kind + ""});
@@ -227,7 +223,7 @@ public class DBManager {
             int sImageId = cursor.getInt(cursor.getColumnIndex("sImageId"));
             String typename = cursor.getString(cursor.getColumnIndex("typename"));
             float total = cursor.getFloat(cursor.getColumnIndex("total"));
-            //计算所占百分比  total /sumMonth
+            //total /sumMonth
             float ratio = FloatUtils.div(total,sumMoneyOneMonth);
             ChartItemBean bean = new ChartItemBean(sImageId, typename, ratio, total);
             list.add(bean);
@@ -236,7 +232,7 @@ public class DBManager {
     }
 
     /**
-    * 获取这个月当中某一天收入支出最大的金额，金额是多少
+    * Get the largest amount of income and expenditure on a certain day of the month
      * */
     public static float getMaxMoneyOneDayInMonth(int year,int month,int kind){
         String sql = "select sum(money) from accounttb where year=? and month=? and kind=? group by day order by sum(money) desc";
@@ -248,7 +244,7 @@ public class DBManager {
         return 0;
     }
 
-    /** 根据指定月份每一日收入或者支出的总钱数的集合*/
+    /** A collection of the total amount of money earned or spent on each day of the specified month*/
     public static List<BarChartItemBean>getSumMoneyOneDayInMonth(int year,int month,int kind){
         String sql = "select day,sum(money) from accounttb where year=? and month=? and kind=? group by day";
         Cursor cursor = db.rawQuery(sql, new String[]{year + "", month + "", kind + ""});

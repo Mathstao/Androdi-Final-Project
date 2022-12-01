@@ -13,21 +13,18 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         super(context,"tally.db" , null, 2);
     }
 
-//    创建数据库的方法，只有项目第一次运行时，会被调用
+//    The method of creating the database will only be called when the project is run for the first time
     @Override
     public void onCreate(SQLiteDatabase db) {
-//        创建表示类型的表
         String sql = "create table typetb(id integer primary key autoincrement,typename varchar(10),imageId integer,sImageId integer,kind integer)";
         db.execSQL(sql);
         insertType(db);
-        //创建记账表
         sql = "create table accounttb(id integer primary key autoincrement,typename varchar(10),sImageId integer,beizhu varchar(80),money float," +
                 "time varchar(60),year integer,month integer,day integer,kind integer)";
         db.execSQL(sql);
     }
 
     private void insertType(SQLiteDatabase db) {
-//      向typetb表当中插入元素
         String sql = "insert into typetb (typename,imageId,sImageId,kind) values (?,?,?,?)";
         db.execSQL(sql,new Object[]{"Other", R.mipmap.ic_qita,R.mipmap.ic_qita_fs,0});
         db.execSQL(sql,new Object[]{"Food", R.mipmap.ic_canyin,R.mipmap.ic_canyin_fs,0});
@@ -56,7 +53,7 @@ public class DBOpenHelper extends SQLiteOpenHelper {
         db.execSQL(sql,new Object[]{"Windfall", R.mipmap.in_yiwai,R.mipmap.in_yiwai_fs,1});
     }
 
-    // 数据库版本在更新时发生改变，会调用此方法
+    // This method is called when the database version changes when updating
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 

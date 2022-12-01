@@ -3,8 +3,8 @@ package com.hui.tally.db;
 public class ChartItemBean {
     int sImageId;
     String type;
-    float ratio;   //所占比例
-    float totalMoney;  //此项的总钱数
+    float ratio;
+    float totalMoney;
 
     public ChartItemBean() {
     }

@@ -1,5 +1,5 @@
 package com.hui.tally.db;
-/* 用于描述绘制柱状图时，每一个柱子表示的对象*/
+/* Used to describe the object represented by each column when drawing a histogram*/
 public class BarChartItemBean {
     int year;
     int month;

@@ -23,31 +23,26 @@ public class RecordActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_record);
-        //1.查找控件
         tabLayout = findViewById(R.id.record_tabs);
         viewPager = findViewById(R.id.record_vp);
-        //2.设置ViewPager加载页面
         initPager();
     }
 
     private void initPager() {
-//        初始化ViewPager页面的集合
         List<Fragment>fragmentList = new ArrayList<>();
-//        创建收入和支出页面，放置在Fragment当中
-        OutcomeFragment outFrag = new OutcomeFragment(); //支出
-        IncomeFragment inFrag = new IncomeFragment(); //收入
+        OutcomeFragment outFrag = new OutcomeFragment();
+        IncomeFragment inFrag = new IncomeFragment();
         fragmentList.add(outFrag);
         fragmentList.add(inFrag);
 
-//        创建适配器
         RecordPagerAdapter pagerAdapter = new RecordPagerAdapter(getSupportFragmentManager(), fragmentList);
-//        设置适配器
+
         viewPager.setAdapter(pagerAdapter);
-        //将TabLayout和ViwePager进行关联
+
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    /* 点击事件*/
+    /* click event */
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.record_iv_back:

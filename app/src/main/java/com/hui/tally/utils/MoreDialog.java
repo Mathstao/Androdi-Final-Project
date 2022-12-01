@@ -66,15 +66,11 @@ public class MoreDialog extends Dialog implements View.OnClickListener {
         cancel();
     }
 
-    /* 设置Dialog的尺寸和屏幕尺寸一致*/
     public void setDialogSize(){
-//        获取当前窗口对象
         Window window = getWindow();
-//        获取窗口对象的参数
         WindowManager.LayoutParams wlp = window.getAttributes();
-//        获取屏幕宽度
         Display d = window.getWindowManager().getDefaultDisplay();
-        wlp.width = (int)(d.getWidth());  //对话框窗口为屏幕窗口
+        wlp.width = (int)(d.getWidth());
         wlp.gravity = Gravity.BOTTOM;
         window.setBackgroundDrawableResource(android.R.color.transparent);
         window.setAttributes(wlp);
