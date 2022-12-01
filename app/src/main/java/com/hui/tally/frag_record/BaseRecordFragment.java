@@ -47,7 +47,7 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         accountBean = new AccountBean();   //创建对象
-        accountBean.setTypename("其他");
+        accountBean.setTypename("Other");
         accountBean.setsImageId(R.mipmap.ic_qita_fs);
     }
 
@@ -66,7 +66,7 @@ public abstract class BaseRecordFragment extends Fragment implements View.OnClic
     /* 获取当前时间，显示在timeTv上*/
     private void setInitTime() {
         Date date = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日 HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         String time = sdf.format(date);
         timeTv.setText(time);
         accountBean.setTime(time);

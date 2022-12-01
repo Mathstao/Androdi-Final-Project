@@ -1,2 +1,0 @@
-# Androdi-Final-Project
-Init

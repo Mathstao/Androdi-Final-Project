@@ -20,7 +20,7 @@
             android:id="@+id/frag_record_tv_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="其他"
+            android:text="Other"
             android:layout_toRightOf="@id/frag_record_iv"
             android:layout_centerVertical="true"
             android:textSize="16sp"
@@ -72,14 +72,14 @@
             android:id="@+id/frag_record_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2020年10月30日 18:49"
+            android:text="2022/11/30 18:49"
             android:layout_alignParentRight="true"
             android:padding="10dp"/>
         <TextView
             android:id="@+id/frag_record_tv_beizhu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="添加备注"
+            android:text="Add remark"
             android:layout_toLeftOf="@id/frag_record_tv_time"
             android:padding="10dp"/>
     </RelativeLayout>

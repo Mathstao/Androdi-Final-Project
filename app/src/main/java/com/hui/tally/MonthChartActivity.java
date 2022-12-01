@@ -78,9 +78,9 @@ public class MonthChartActivity extends AppCompatActivity {
         float outMoneyOneMonth = DBManager.getSumMoneyOneMonth(year, month, 0); //支出总钱数
         int incountItemOneMonth = DBManager.getCountItemOneMonth(year, month, 1);  //收入多少笔
         int outcountItemOneMonth = DBManager.getCountItemOneMonth(year, month, 0); //支出多少笔
-        dateTv.setText(year+"年"+month+"月账单");
-        inTv.setText("共"+incountItemOneMonth+"笔收入, ￥ "+inMoneyOneMonth);
-        outTv.setText("共"+outcountItemOneMonth+"笔支出, ￥ "+outMoneyOneMonth);
+        dateTv.setText(year+"/"+month+" Month Expense");
+        inTv.setText(incountItemOneMonth+" term(s) of Income, $ "+inMoneyOneMonth);
+        outTv.setText(outcountItemOneMonth+" term(s) of Expenses, $ "+outMoneyOneMonth);
 
     }
 

@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /* 弹出是否删除某一条记录的对话框*/
     private void showDeleteItemDialog(final  AccountBean clickBean) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Warning").setMessage("Are you sure you want to delete this record?")
-                .setNegativeButton("Cancel",null)
-                .setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        builder.setTitle("提示信息").setMessage("您确定要删除这条记录么？")
+                .setNegativeButton("取消",null)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int click_id = clickBean.getId();
@@ -141,13 +141,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //获取今日支出和收入总金额，显示在view当中
         float incomeOneDay = DBManager.getSumMoneyOneDay(year, month, day, 1);
         float outcomeOneDay = DBManager.getSumMoneyOneDay(year, month, day, 0);
-        String infoOneDay = "Today Expenses ￥"+outcomeOneDay+"  Income ￥"+incomeOneDay;
+        String infoOneDay = "Today Expenses $ "+outcomeOneDay+"   Income $ "+incomeOneDay;
         topConTv.setText(infoOneDay);
 //        获取本月收入和支出总金额
         float incomeOneMonth = DBManager.getSumMoneyOneMonth(year, month, 1);
         float outcomeOneMonth = DBManager.getSumMoneyOneMonth(year, month, 0);
-        topInTv.setText("￥"+incomeOneMonth);
-        topOutTv.setText("￥"+outcomeOneMonth);
+        topInTv.setText("$"+incomeOneMonth);
+        topOutTv.setText("$"+outcomeOneMonth);
 
 //    设置显示运算剩余
         float bmoney = preferences.getFloat("bmoney", 0);//预算
@@ -214,7 +214,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 //计算剩余金额
                 float outcomeOneMonth = DBManager.getSumMoneyOneMonth(year, month, 0);
                 float syMoney = money-outcomeOneMonth;//预算剩余 = 预算-支出
-                topbudgetTv.setText("￥"+syMoney);
+                topbudgetTv.setText("$"+syMoney);
             }
         });
     }

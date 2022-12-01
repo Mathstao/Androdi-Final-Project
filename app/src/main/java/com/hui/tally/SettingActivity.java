@@ -31,14 +31,15 @@ public class SettingActivity extends AppCompatActivity {
 
     private void showDeleteDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("删除提示")
-                .setMessage("您确定要删除所有记录么？\n注意：删除后无法恢复，请慎重选择！")
-                .setPositiveButton("取消",null)
-                .setNegativeButton("确定", new DialogInterface.OnClickListener() {
+        builder.setTitle("Warning")
+                .setMessage("Are you sure you want to delete all records?\n" +
+                        "Note: It cannot be restored after deletion!")
+                .setPositiveButton("cancel",null)
+                .setNegativeButton("confirm", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         DBManager.deleteAllAccount();
-                        Toast.makeText(SettingActivity.this,"删除成功！",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SettingActivity.this,"Deleted！",Toast.LENGTH_SHORT).show();
                     }
                 });
         builder.create().show();

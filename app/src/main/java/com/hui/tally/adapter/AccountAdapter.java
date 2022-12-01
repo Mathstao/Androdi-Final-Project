@@ -58,10 +58,10 @@ public class AccountAdapter extends BaseAdapter {
         holder.typeIv.setImageResource(bean.getsImageId());
         holder.typeTv.setText(bean.getTypename());
         holder.beizhuTv.setText(bean.getBeizhu());
-        holder.moneyTv.setText("￥ "+bean.getMoney());
+        holder.moneyTv.setText("$ "+bean.getMoney());
         if (bean.getYear()==year&&bean.getMonth()==month&&bean.getDay()==day) {
             String time = bean.getTime().split(" ")[1];
-            holder.timeTv.setText("今天 "+time);
+            holder.timeTv.setText("Today "+time);
         }else {
             holder.timeTv.setText(bean.getTime());
         }

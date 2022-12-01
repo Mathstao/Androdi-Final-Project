@@ -39,7 +39,7 @@ public class HistoryActivity extends AppCompatActivity {
         adapter = new AccountAdapter(this,mDatas);
         historyLv.setAdapter(adapter);
         initTime();
-        timeTv.setText(year+"年"+month+"月");
+        timeTv.setText(year+"/"+month);
         loadData(year,month);
         setLVClickListener();
     }
@@ -97,7 +97,7 @@ public class HistoryActivity extends AppCompatActivity {
                 dialog.setOnRefreshListener(new CalendarDialog.OnRefreshListener() {
                     @Override
                     public void onRefresh(int selPos, int year, int month) {
-                        timeTv.setText(year+"年"+month+"月");
+                        timeTv.setText(year+"/"+month);
                         loadData(year,month);
                         dialogSelPos = selPos;
                         dialogSelMonth = month;

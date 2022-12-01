@@ -1,0 +1,16 @@
+Project Name: Expense Tracker
+Development tools: Android Studio
+
+Project description: A personal accounting tool developed based on the basic knowledge of Android, which includes recording the income and expenditure of the day, calculating the total amount of income and expenditure for the day and the current month, viewing historical bills, and analyzing the monthly income and expenditure with icons. percentage analysis,
+It is possible to search for functions such as the user's entire income and expenditure situation on a certain record. Basically, it can solve all the problems of personal bookkeeping, the interface is simple and beautiful, and the sliding is smooth.
+Important technical points of the project:
+
+1- Draw the layout, master the properties and use of the basic view control of android
+2- Familiar with Activity page display, jump and value passing
+3- Use the fragment loading interface, slide the view to switch pages
+4- Customize dialog
+5- Custom soft keyboard drawing and use
+6- Adapter usage and page load for list view and grid view
+7- Use Android's built-in database, create tables proficiently, and perform additions, deletions, modifications, and queries
+8- Define the drawable file, set the layout and control style
+9- Use MPAndroidChart third-party framework to draw histogram

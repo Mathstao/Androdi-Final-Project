@@ -61,7 +61,7 @@ public class ChartItemAdapter extends BaseAdapter {
         String pert = FloatUtils.ratioToPercent(ratio);
         holder.ratioTv.setText(pert);
 
-        holder.totalTv.setText("￥ "+bean.getTotalMoney());
+        holder.totalTv.setText("$ "+bean.getTotalMoney());
         return convertView;
     }
 

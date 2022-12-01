@@ -38,18 +38,14 @@
             android:id="@+id/history_tv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2020 / 11"/>
-
+            android:text="2022/11"/>
         <TextView
             android:id="@+id/history_tv_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginRight="10dp"
-            android:text="@string/history_info"
-            android:textColor="@color/green_006400" />
+            android:textColor="@color/green_006400"
+            android:text="@string/history_info"/>
     </RelativeLayout>
     <ListView
         android:id="@+id/history_lv"
